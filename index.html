@@ -25,9 +25,11 @@
             background: white;
             border: 3px solid white;
             border-radius: 20px;
-            position: relative;
-            margin: auto;
+            position: absolute;
             top:250px;
+            left: 450px;
+            text-align: center;
+            font-size: 18px;
             display: none;
           }
           @keyframes out {
@@ -58,12 +60,12 @@
         <br/><br/><span style="position: relative;left: 10px;">自我介绍</span>
       </div>
       <div id="intro_win">
-        <h2 style="display: inline;">世界因我而不同,I'm SHENGRUI11!</h2><img id="close_intro" style="position: relative;left: 50px;top: 5px;" src="images/close.png"/>
+        <h2 style="display: inline;">世界因我而不同,I'm SHENGRUI11!</h2><img id="close_intro" style="position: relative;left: 10px;top: 5px;" src="images/close.png"/>
         <p>
           你好啊，陌生人，我叫SHENGRUI11，这是我的Github:
           <a href="https://www.github.com/SHENGRUI11" target="_blank">SHENGRUI11</a>（网页加载速度可能较慢）。
           这是我的Bilibili:<a href="https://space.bilibili.com/3537119846861310" target="_blank">SHENGRUI11</a>
-          (这窗口不能拖动，想啥呢)
+          (这窗口能拖动，我没那么辣鸡，窗口拖动都不会)
         </p>
       </div>
     </body>
@@ -79,5 +81,18 @@
         intro_win.style.display = "none";
         intro_win.style.animation = "in 1s";
       }
+      intro_win.onmousedown = function(event){
+                var disX = event.clientX - this.offsetLeft;
+                var disY = event.clientY - this.offsetTop;
+                intro_win.onmousemove = function(event){
+                    var l = event.clientX - disX;
+                    var t = event.clientY - disY;
+                    intro_win.style.left = l + "px";
+                    intro_win.style.top = t + "px";
+                }
+                intro_win.onmouseup = function(){
+                  intro_win.onmousemove = null;
+                }
+            }
     </script>
 </html>
